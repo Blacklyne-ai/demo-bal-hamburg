@@ -1020,6 +1020,33 @@
 }
 
 /* ════════════════════════════════════════════════════════════════
+   LACKMARKEN SECTION (atmospheric Photo-BG)
+   ════════════════════════════════════════════════════════════════ */
+.lackmarken-section {
+  position: relative;
+  overflow: hidden;
+}
+.lackmarken-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.lackmarken-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(2px) saturate(0.5);
+}
+.lackmarken-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgb(250 251 252 / 0.96) 0%, rgb(243 245 248 / 0.92) 100%),
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgb(0 117 189 / 0.04), transparent 70%);
+}
+
+/* ════════════════════════════════════════════════════════════════
    LACKMARKEN-BOX (PPG + Glasurit Big Display)
    ════════════════════════════════════════════════════════════════ */
 .brand-display {
