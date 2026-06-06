@@ -14,15 +14,19 @@ Das Logo zeigt zwei Blau-Töne (Straßenmarkierungen + heller Akzent + roter Sch
 "MEISTERBETRIEB"). Das Werkstatt-Foto zeigt den AUTOLACKIEREREI-Schriftzug an der Halle
 in einem klaren, kräftigen Mittelblau (Logo-CI 1:1).
 
-### Brand-Palette
+### Brand-Palette (1:1 aus alter BAL-CSS extrahiert)
 
-| Token | Hex | Rolle |
-|---|---|---|
-| `--brand` | `#0F75BD` | BAL-Blau (Hallenschriftzug, primary CTA, Akzentwort) |
-| `--brand-deep` | `#0A4D80` | Logo-Blau tief (Hover, dunkler Akzent) |
-| `--brand-sky` | `#3FA5DC` | Light Blau (Highlights, Pill-Hover) |
-| `--accent` | `#D62828` | Rot aus "MEISTERBETRIEB" (Trust-Akzente, Highlights) |
-| `--accent-deep` | `#A41E1E` | Rot tief (Hover) |
+Original-Site Häufigkeit: `#002850` (43x = dominanter Brand-Color), `#0075bd` (22x = primary CTAs).
+Diese beiden bilden das Brand-Blau-Paar:
+
+| Token | Hex | Rolle | Original-Verwendung |
+|---|---|---|---|
+| `--brand` | `#0075BD` | Primary CTA, Akzentwort, Buttons | 22x in alter CSS |
+| `--brand-dark` | `#002850` | Headlines-Akzent, Hover, Marine | 43x (dominant!) |
+| `--brand-deep` | `#001A33` | Footer-Tone, tiefster Akzent | eigene Erweiterung |
+| `--brand-sky` | `#3FA5DC` | Light Blau (Highlights, Dark-Section-Akzent) | Logo-helle Variante |
+| `--accent` | `#D62828` | Rot aus "MEISTERBETRIEB" Schriftzug (Trust-Pill) | Logo-Rot |
+| `--accent-deep` | `#A41E1E` | Rot tief (Hover) | eigene Erweiterung |
 
 ### Anthrazit (Dark Sections)
 
@@ -52,21 +56,24 @@ in einem klaren, kräftigen Mittelblau (Logo-CI 1:1).
 - **Light Sections** (Hero, USPs, Philosophie, Lackmarken, Standort): `--paper` BG + `--ink` Text
 - **Akzent-Wort-Regel**: Headlines bekommen 1-2 Worte in `--brand` (Blau dominant), Rot wird sparsam für Trust-Marker eingesetzt (DEKRA, "MEISTERBETRIEB").
 
-## Schrift
+## Schrift (1:1 aus Original-CSS)
 
-Alte TYPO3-Site nutzt PT Sans (humanistisch, neutral). Für unseren modernen Industrie-
-Großbetrieb-Look wechseln wir auf:
+Alte TYPO3-Site nutzt **PT Sans** als einzige Custom-Font (im DynCSS verifiziert:
+`font-family: "PT Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+Arial, sans-serif`). Wir bleiben **authentisch bei der Original-Familie** und
+kombinieren mit **PT Sans Narrow** für Editorial-Display-Headlines (selbe Familie,
+condensed Variante - gibt Magazin-Feel ohne Bruch zur Marke).
 
 | Use | Font | Weight | Begründung |
 |---|---|---|---|
-| Display (H1) | **Oswald** | 700 | Geometrisch-condensed, exakt der Logo-Charakter ("BERGEDORFER"-Schriftzug an der Halle hat genau diese Anmutung) |
-| Headlines (H2-H6) | **Oswald** | 600-700 | Konsistent mit Display, gibt Editorial-Magazin-Feel |
-| Body | **Inter** | 400/500 | Clean, modern, sehr lesbar, professionell |
-| UI / Buttons | **Inter** | 600 | Klar, anti-cringe |
-| Eyebrow / Caps | **Inter** | 600 (uppercase + tracking) | Editorial-Marker |
+| Display (H1) | **PT Sans Narrow** | 700 | Condensed Variante der Original-Familie - schlank-elegant für Editorial-Headlines |
+| Headlines (H2-H6) | **PT Sans Narrow** | 700 | Konsistent mit Display |
+| Body | **PT Sans** | 400/700 | 1:1 aus Original-CSS - humanistisch, neutral, sehr lesbar |
+| UI / Buttons | **PT Sans** | 600 | Klar, anti-cringe |
+| Eyebrow / Caps | **PT Sans** | 700 (uppercase + tracking) | Editorial-Marker |
 
-Via `@fontsource` oder Google Fonts direkt (analog Getriebe-Vorlage: link href Stylesheet
-in Layout.astro).
+Eingebunden via Google Fonts in `src/layouts/Layout.astro`:
+`https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans+Narrow:wght@400;700&display=swap`
 
 ## Brand-Charakter (4 Adjektive)
 

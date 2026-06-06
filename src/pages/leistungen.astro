@@ -13,19 +13,25 @@ const groups = [
 
 <Layout title={`Leistungen - ${site.name}`} description="Lackierung, Karosserie und Service in einer Halle: Ganzlackierung, Spot Repair, Richtbankarbeiten, Scheibenreparatur, Hohlraumversiegelung und mehr." current="leistungen">
 
-  <!-- Sub-Hero -->
-  <section class="pt-32 pb-12 md:pt-36 md:pb-16">
-    <div class="container-rd">
-      <div class="max-w-3xl">
-        <p class="eyebrow mb-5">
-          <span>Unsere Leistungen</span>
-        </p>
-        <h1 class="heading-display text-balance mb-5">
-          Lackierung, Karosserie, Scheiben - <span class="accent-brand">aus einer Halle.</span>
-        </h1>
-        <p class="lead text-pretty">
-          Vom Kleinschaden bis zur Komplettlackierung Ihres LKW: 2.000 qm Halle, moderne Lackier- &amp; Trockenkabine, 12 Vorbereitungsplätze und 20+ geschulte Mitarbeiter. Wir arbeiten an Fahrzeugen bis 7,5 Tonnen.
-        </p>
+  <!-- Sub-Hero mit Banner -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-bg" aria-hidden="true">
+      <img src="/images/leistungen.jpg" alt="" loading="eager" />
+      <div class="subpage-hero-overlay"></div>
+    </div>
+    <div class="subpage-hero-inner">
+      <div class="container-rd">
+        <div class="max-w-3xl">
+          <p class="eyebrow mb-5" style="color:rgb(var(--rgb-brand-sky));">
+            <span>Unsere Leistungen</span>
+          </p>
+          <h1 class="heading-display text-balance mb-5">
+            Lackierung, Karosserie, Scheiben - <span style="color:rgb(var(--rgb-brand-sky));">aus einer Halle.</span>
+          </h1>
+          <p class="lead-on-dark text-pretty">
+            Vom Kleinschaden bis zur Komplettlackierung Ihres LKW: 2.000 qm Halle, moderne Lackier- &amp; Trockenkabine, 12 Vorbereitungsplätze und 20+ geschulte Mitarbeiter. Wir arbeiten an Fahrzeugen bis 7,5 Tonnen.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -108,7 +114,7 @@ const groups = [
   <!-- CTA -->
   <section class="final-cta">
     <div class="final-cta-bg" aria-hidden="true">
-      <img src="/images/hero.jpg" alt="" loading="lazy" />
+      <img src="/images/lackier-1.jpg" alt="" loading="lazy" />
       <div class="final-cta-overlay"></div>
     </div>
     <div class="container-rd relative">

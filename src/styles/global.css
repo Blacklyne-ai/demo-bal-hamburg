@@ -27,13 +27,13 @@
   --rgb-muted:      92 107 122;    /* #5C6B7A  muted body */
   --rgb-muted-light:140 153 168;   /* #8C99A8  metadata */
 
-  /* Brand Blau (aus Logo + Hallenfoto) */
-  --rgb-brand:      15 117 189;    /* #0F75BD  primary CTAs, Akzent-Wort */
-  --rgb-brand-dark: 10 77 128;     /* #0A4D80  hover, Logo-Marine */
-  --rgb-brand-deep: 7 56 95;       /* #07385F  Footer-Tone */
+  /* Brand Blau - 1:1 aus alter BAL-CSS extrahiert */
+  --rgb-brand:      0 117 189;     /* #0075BD  primary CTAs (22x in Original-CSS) */
+  --rgb-brand-dark: 0 40 80;       /* #002850  Headlines + Marine (43x = häufigste!) */
+  --rgb-brand-deep: 0 26 51;       /* #001A33  Footer-Tone */
   --rgb-brand-sky:  63 165 220;    /* #3FA5DC  Highlights, helle Akzente */
 
-  /* Accent Rot (aus "MEISTERBETRIEB" Schriftzug Logo) */
+  /* Accent Rot - aus "MEISTERBETRIEB" Schriftzug Logo */
   --rgb-accent:      214 40 40;    /* #D62828  Trust-Pill, DEKRA-Akzent */
   --rgb-accent-deep: 164 30 30;    /* #A41E1E  hover */
 
@@ -46,10 +46,11 @@
   --rgb-line:      226 232 240;        /* #E2E8F0  border light */
   --rgb-line-dark: 44 58 75;           /* #2C3A4B  border dark */
 
-  /* Type */
-  --font-display: 'Oswald', 'Barlow Condensed', system-ui, -apple-system, sans-serif;
-  --font-headline: 'Oswald', 'Barlow Condensed', system-ui, sans-serif;
-  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Type - 1:1 aus alter BAL-CSS: "PT Sans" + Apple-System Fallback.
+     PT Sans Narrow für Editorial-Display (Original-Familie, condensed). */
+  --font-display: 'PT Sans Narrow', 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-headline: 'PT Sans Narrow', 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-sans: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 
   /* Radii */
   --r-sm: 4px;
@@ -270,21 +271,21 @@
   .eyebrow-dark { color: rgb(var(--rgb-brand)); }
   .eyebrow-accent { color: rgb(var(--rgb-accent)); }
 
-  /* ════════ HEADINGS ════════ */
+  /* ════════ HEADINGS - PT Sans Narrow Bold für Editorial-Magazin-Charakter ════════ */
   .heading-display {
     font-family: var(--font-headline);
-    font-size: clamp(2.6rem, 6.5vw, 5.6rem);
+    font-size: clamp(2.6rem, 6.8vw, 5.8rem);
     font-weight: 700;
     line-height: 0.98;
-    letter-spacing: -0.022em;
+    letter-spacing: -0.012em;
     text-transform: none;
   }
   .heading-xl {
     font-family: var(--font-headline);
-    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    font-size: clamp(2rem, 4.8vw, 3.6rem);
     font-weight: 700;
     line-height: 1.02;
-    letter-spacing: -0.018em;
+    letter-spacing: -0.008em;
   }
   .heading-lg {
     font-family: var(--font-headline);
@@ -874,8 +875,8 @@
   z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.85rem 1.1rem;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
   background: rgb(255 255 255 / 0.96);
   border: 1px solid rgb(255 255 255 / 0.4);
   backdrop-filter: blur(20px) saturate(180%);
@@ -883,46 +884,115 @@
   border-radius: 12px;
   color: rgb(var(--rgb-ink));
   box-shadow:
-    0 8px 24px -8px rgb(15 20 25 / 0.25),
+    0 8px 24px -8px rgb(0 40 80 / 0.25),
     inset 0 1px 0 0 rgb(255 255 255 / 0.9);
 }
-.hero-trust-overlay-top    { top: 1.5rem;    right: 1.5rem; }
-.hero-trust-overlay-bottom { bottom: 1.5rem; left: 1.5rem; }
+@media (min-width: 768px) {
+  .hero-trust-overlay { gap: 0.85rem; padding: 0.85rem 1.1rem; }
+}
+.hero-trust-overlay-top    { top: 1rem;    right: 1rem; }
+.hero-trust-overlay-bottom { bottom: 1rem; left: 1rem; }
+@media (min-width: 768px) {
+  .hero-trust-overlay-top    { top: 1.5rem;    right: 1.5rem; }
+  .hero-trust-overlay-bottom { bottom: 1.5rem; left: 1.5rem; }
+}
 .hero-trust-overlay-icon {
-  width: 42px; height: 42px;
-  border-radius: 8px;
+  width: 34px; height: 34px;
+  border-radius: 7px;
   overflow: hidden;
   flex-shrink: 0;
   background: #fff;
   border: 1px solid rgb(var(--rgb-line));
   display: flex; align-items: center; justify-content: center;
 }
+@media (min-width: 768px) {
+  .hero-trust-overlay-icon { width: 42px; height: 42px; border-radius: 8px; }
+}
 .hero-trust-overlay-icon img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
 .hero-trust-overlay-icon.is-photo img { object-fit: cover; padding: 0; }
 .hero-trust-overlay-label {
   font-family: var(--font-sans);
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgb(var(--rgb-accent));
   display: block;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.1rem;
+}
+@media (min-width: 768px) {
+  .hero-trust-overlay-label { font-size: 0.6rem; letter-spacing: 0.22em; margin-bottom: 0.15rem; }
 }
 .hero-trust-overlay-label.is-brand { color: rgb(var(--rgb-brand)); }
 .hero-trust-overlay-title {
   font-family: var(--font-headline);
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: rgb(var(--rgb-ink));
   line-height: 1.1;
 }
+@media (min-width: 768px) {
+  .hero-trust-overlay-title { font-size: 1rem; }
+}
 .hero-trust-overlay-sub {
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   color: rgb(var(--rgb-muted));
   line-height: 1.1;
   margin-top: 1px;
+  display: none;
 }
+@media (min-width: 768px) {
+  .hero-trust-overlay-sub { display: block; font-size: 0.78rem; }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   SUBPAGE HERO-BANNER (großes Werkstatt-Foto + Eyebrow + Headline)
+   ════════════════════════════════════════════════════════════════ */
+.subpage-hero {
+  position: relative;
+  padding-top: 6rem;
+  overflow: hidden;
+  background: rgb(var(--rgb-anthracite));
+}
+@media (min-width: 768px) {
+  .subpage-hero { padding-top: 7rem; }
+}
+.subpage-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+.subpage-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.45) saturate(0.95);
+}
+.subpage-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      rgb(0 26 51 / 0.86) 0%,
+      rgb(0 40 80 / 0.7) 50%,
+      rgb(0 117 189 / 0.45) 100%);
+  z-index: 1;
+}
+.subpage-hero-inner {
+  position: relative;
+  z-index: 2;
+  padding: 3.5rem 0 4rem;
+}
+@media (min-width: 768px) {
+  .subpage-hero-inner { padding: 5rem 0 6rem; }
+}
+.subpage-hero h1 {
+  color: #fff;
+  text-shadow: 0 2px 24px rgb(0 0 0 / 0.5);
+}
+.subpage-hero p { color: rgb(255 255 255 / 0.85); }
 
 /* ════════════════════════════════════════════════════════════════
    PHILOSOPHIE-QUOTE (Editorial Mega-Quote)

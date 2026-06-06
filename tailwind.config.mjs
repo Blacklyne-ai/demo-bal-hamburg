@@ -39,9 +39,9 @@ export default {
         'line-dark': 'rgb(var(--rgb-line-dark) / <alpha-value>)',
       },
       fontFamily: {
-        sans:     ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-        headline: ['Oswald', 'Barlow Condensed', 'Inter', 'system-ui', 'sans-serif'],
-        display:  ['Oswald', 'Barlow Condensed', 'Inter', 'system-ui', 'sans-serif'],
+        sans:     ['PT Sans', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        headline: ['PT Sans Narrow', 'PT Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        display:  ['PT Sans Narrow', 'PT Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       maxWidth: {
         '8xl': '88rem',

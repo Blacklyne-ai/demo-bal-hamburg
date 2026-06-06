@@ -18,17 +18,23 @@ const gallery = [
 
 <Layout title={`Galerie - ${site.name}`} description="Eindrücke aus unserer 2.000 qm Halle in Hamburg-Bergedorf: Lackierarbeiten, Karosserie, Felgen und Werkstatt-Atmosphäre." current="galerie">
 
-  <!-- Sub-Hero -->
-  <section class="pt-32 pb-12 md:pt-36 md:pb-16">
-    <div class="container-rd">
-      <div class="max-w-3xl">
-        <p class="eyebrow mb-5"><span>Galerie</span></p>
-        <h1 class="heading-display text-balance mb-5">
-          Eindrücke aus unserer <span class="accent-brand">Werkstatt.</span>
-        </h1>
-        <p class="lead text-pretty">
-          Hochwertige Lackierarbeiten, präzise Karosserie und sauberer Werkstattalltag - ein Blick in unsere 2.000 qm Halle in Hamburg-Bergedorf.
-        </p>
+  <!-- Sub-Hero mit Banner -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-bg" aria-hidden="true">
+      <img src="/images/galerie-header.jpg" alt="" loading="eager" />
+      <div class="subpage-hero-overlay"></div>
+    </div>
+    <div class="subpage-hero-inner">
+      <div class="container-rd">
+        <div class="max-w-3xl">
+          <p class="eyebrow mb-5" style="color:rgb(var(--rgb-brand-sky));"><span>Galerie</span></p>
+          <h1 class="heading-display text-balance mb-5">
+            Eindrücke aus unserer <span style="color:rgb(var(--rgb-brand-sky));">Werkstatt.</span>
+          </h1>
+          <p class="lead-on-dark max-w-2xl text-pretty">
+            Hochwertige Lackierarbeiten, präzise Karosserie und sauberer Werkstattalltag - ein Blick in unsere 2.000 qm Halle in Hamburg-Bergedorf.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -50,7 +56,7 @@ const gallery = [
   <!-- CTA -->
   <section class="final-cta">
     <div class="final-cta-bg" aria-hidden="true">
-      <img src="/images/hero.jpg" alt="" loading="lazy" />
+      <img src="/images/karosserie-1.jpg" alt="" loading="lazy" />
       <div class="final-cta-overlay"></div>
     </div>
     <div class="container-rd relative">

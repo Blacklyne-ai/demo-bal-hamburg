@@ -7,17 +7,23 @@ import { equipment } from '../data/services';
 
 <Layout title={`Qualität - ${site.name}`} description="DEKRA zertifiziert, moderne Lackier- & Trockenkabine, Spot Repair UV-Trocknung, Farbtonanalyse - unsere Ausstattung im Detail." current="qualitaet">
 
-  <!-- Sub-Hero -->
-  <section class="pt-32 pb-12 md:pt-36 md:pb-16">
-    <div class="container-rd">
-      <div class="max-w-3xl">
-        <p class="eyebrow eyebrow-accent mb-5"><span>Qualität garantiert</span></p>
-        <h1 class="heading-display text-balance mb-5">
-          DEKRA zertifiziert. <span class="accent-brand">Jährlich geprüft.</span>
-        </h1>
-        <p class="lead text-pretty">
-          Unser Fachbetrieb wird jährlich von der DEKRA geprüft und zertifiziert. So garantieren wir Ihnen besten Service - nachweisbar und transparent.
-        </p>
+  <!-- Sub-Hero mit Banner -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-bg" aria-hidden="true">
+      <img src="/images/qualitaet.jpg" alt="" loading="eager" />
+      <div class="subpage-hero-overlay"></div>
+    </div>
+    <div class="subpage-hero-inner">
+      <div class="container-rd">
+        <div class="max-w-3xl">
+          <p class="eyebrow mb-5" style="color:rgb(var(--rgb-accent));"><span>Qualität garantiert</span></p>
+          <h1 class="heading-display text-balance mb-5">
+            DEKRA zertifiziert. <span style="color:rgb(var(--rgb-brand-sky));">Jährlich geprüft.</span>
+          </h1>
+          <p class="lead-on-dark max-w-2xl text-pretty">
+            Unser Fachbetrieb wird jährlich von der DEKRA geprüft und zertifiziert. So garantieren wir Ihnen besten Service - nachweisbar und transparent.
+          </p>
+        </div>
       </div>
     </div>
   </section>

@@ -6,16 +6,24 @@ import { site, telLandline, telMobile, mailLink, whatsappLink } from '../data/si
 
 <Layout title={`Kontakt - ${site.name}`} description={`Kontakt zur Bergedorfer Autolackiererei: Festnetz ${site.phoneLandline}, Mobil ${site.phoneMobile}, E-Mail ${site.email}. Kurt-A.-Körber-Chaussee 107-109, 21033 Hamburg.`} current="kontakt">
 
-  <!-- Subpage Hero -->
-  <section class="ink-grid relative pt-28 pb-14 md:pt-32 md:pb-20 overflow-hidden">
-    <div class="container-rd relative">
-      <p class="eyebrow mb-5" style="color:rgb(var(--rgb-brand-sky));"><span>Kontakt</span></p>
-      <h1 class="heading-display text-white text-balance mb-5 max-w-4xl">
-        Rufen Sie uns an - <span style="color:rgb(var(--rgb-brand-sky));">wir hören zu.</span>
-      </h1>
-      <p class="lead-on-dark max-w-3xl text-pretty">
-        Der direkte Draht ist uns lieber als jedes Formular. Rufen Sie an, schreiben Sie eine WhatsApp oder eine E-Mail - wir melden uns zurück.
-      </p>
+  <!-- Sub-Hero mit Banner (Hero-Foto = Werkstatt-Außenansicht) -->
+  <section class="subpage-hero">
+    <div class="subpage-hero-bg" aria-hidden="true">
+      <img src="/images/hero.jpg" alt="" loading="eager" />
+      <div class="subpage-hero-overlay"></div>
+    </div>
+    <div class="subpage-hero-inner">
+      <div class="container-rd">
+        <div class="max-w-3xl">
+          <p class="eyebrow mb-5" style="color:rgb(var(--rgb-brand-sky));"><span>Kontakt</span></p>
+          <h1 class="heading-display text-balance mb-5">
+            Rufen Sie uns an - <span style="color:rgb(var(--rgb-brand-sky));">wir hören zu.</span>
+          </h1>
+          <p class="lead-on-dark max-w-2xl text-pretty">
+            Der direkte Draht ist uns lieber als jedes Formular. Rufen Sie an, schreiben Sie eine WhatsApp oder eine E-Mail - wir melden uns zurück.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
 

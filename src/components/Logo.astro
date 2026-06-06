@@ -45,15 +45,24 @@ const w = Math.round(h * (280 / 75));
     transform: translateY(-1px);
     filter: drop-shadow(0 4px 16px rgb(15 117 189 / 0.3));
   }
-  /* Dunkle Sections (Footer): Logo in weißer Box, sodass weißer Logo-BG nicht hart abschneidet */
+  /* Dunkle Sections (Footer): Logo hat transparente Ecken (Alpha=0).
+     Subtle weiße Pille mit smooth Glow-Border statt hartem Block. */
   .brand-logo-on-dark {
-    background: #fff;
-    padding: 0.45rem 0.7rem;
-    border-radius: 8px;
-    border: 1px solid rgb(255 255 255 / 0.15);
+    background: rgb(255 255 255 / 0.96);
+    padding: 0.5rem 0.85rem;
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 0.18);
     box-shadow:
-      0 4px 14px -4px rgb(0 0 0 / 0.35),
-      inset 0 1px 0 0 rgb(255 255 255 / 0.6);
+      0 6px 18px -6px rgb(0 0 0 / 0.4),
+      0 0 0 1px rgb(0 117 189 / 0.08),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.9);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .brand-logo-on-dark:hover {
+    box-shadow:
+      0 10px 24px -8px rgb(0 117 189 / 0.4),
+      0 0 0 1px rgb(0 117 189 / 0.2),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.9);
   }
   .brand-logo-img {
     display: block;

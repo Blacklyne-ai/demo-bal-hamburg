@@ -1,14 +1,56 @@
 ---
+// Schlanke Floating-Pille statt voller Bar (Memory: nicht zu fett, "2018-Look" vermeiden).
 import { telLandline, site } from '../data/site';
 import Icon from './Icon.astro';
 ---
 
 <a
   href={telLandline}
-  class="fixed bottom-4 left-4 right-4 z-40 btn btn-primary btn-block items-center justify-center gap-2 shadow-lg xl:hidden"
-  style="padding-top:0.85rem;padding-bottom:0.85rem;box-shadow:0 12px 30px -10px rgba(15,117,189,0.55);"
+  class="floating-cta xl:hidden"
   aria-label={`Anrufen ${site.phoneLandline}`}
 >
-  <Icon name="Phone" size={16} strokeWidth={2.2} />
-  <span class="font-bold font-headline tracking-wide">ANRUFEN: {site.phoneLandline}</span>
+  <span class="floating-cta-icon" aria-hidden="true">
+    <Icon name="Phone" size={14} strokeWidth={2.4} />
+  </span>
+  <span class="floating-cta-label">Anrufen <strong>{site.phoneLandline}</strong></span>
 </a>
+
+<style>
+  .floating-cta {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 40;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 1.05rem 0.55rem 0.4rem;
+    background: linear-gradient(135deg, rgb(0 117 189) 0%, rgb(0 40 80) 100%);
+    color: #fff;
+    border-radius: 999px;
+    box-shadow:
+      0 6px 22px -6px rgb(0 40 80 / 0.65),
+      0 2px 6px -1px rgb(0 0 0 / 0.2),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.18);
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.2s ease, box-shadow 0.25s ease;
+  }
+  .floating-cta:active { transform: translateX(-50%) translateY(1px); }
+  .floating-cta-icon {
+    width: 30px; height: 30px;
+    border-radius: 999px;
+    background: rgb(255 255 255 / 0.2);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .floating-cta-label strong {
+    margin-left: 0.25rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+</style>
