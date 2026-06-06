@@ -1,0 +1,406 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site, telLandline, telMobile, mailLink, whatsappLink } from '../data/site';
+import { services, usps, aboutStats } from '../data/services';
+---
+
+<Layout title={`${site.name} - ${site.subtitle}`} description={site.description} current="home">
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 1 - HERO (light, Editorial-Layout)
+       Werkstattfoto rechts groß mit Floating-Cards
+       Editorial-Headline links · Trust-Strip unten
+       Ghost-Watermark "BAL" gross dezent
+       ═══════════════════════════════════════════════════ -->
+  <section class="hero-section pt-28 pb-10 md:pt-32 md:pb-14 lg:pt-36 lg:pb-20">
+    <div class="ghost-watermark ghost-watermark-light" aria-hidden="true">BAL</div>
+
+    <div class="container-rd relative z-10">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+        <!-- Linke Spalte: Editorial-Headline -->
+        <div class="lg:col-span-6 xl:col-span-6 fade-in">
+          <p class="eyebrow mb-6 stagger-1 fade-in">
+            <span>Lackier- &amp; Karosserie-Meisterbetrieb · Hamburg-Bergedorf</span>
+          </p>
+
+          <h1 class="heading-display text-ink text-balance mb-7 stagger-2 fade-in">
+            Bergedorfer<br />
+            Autolackiererei.<br />
+            <span class="accent-brand">Ihr Fachbetrieb in Hamburg.</span>
+          </h1>
+
+          <p class="lead max-w-xl mb-8 text-pretty stagger-3 fade-in">
+            Modern und vielseitig: über 2.000 qm Halle, 20+ Mitarbeiter und mehr als 22 Jahre Berufserfahrung. Lackierungen, Karosseriereparaturen und Scheiben-Service aus einer Hand - PKW bis 7,5 t.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 stagger-4 fade-in mb-8">
+            <a href={telLandline} class="btn btn-primary btn-lg" aria-label={`Jetzt anrufen: ${site.phoneLandline}`}>
+              <Icon name="Phone" size={16} strokeWidth={2.2} />
+              Termin anfragen
+            </a>
+            <a href="/leistungen" class="btn btn-outline btn-lg">
+              Unsere Leistungen
+              <Icon name="ArrowRight" size={16} strokeWidth={2} />
+            </a>
+          </div>
+
+          <!-- Trust-Strip mit · Trennern -->
+          <ul class="trust-strip stagger-5 fade-in">
+            <li class="trust-strip-item">
+              <Icon name="Award" size={14} strokeWidth={2.2} class="trust-strip-icon" />
+              <span>22+ Jahre Erfahrung</span>
+            </li>
+            <li class="trust-strip-item">
+              <Icon name="Building" size={14} strokeWidth={2.2} class="trust-strip-icon" />
+              <span>2.000 qm Halle</span>
+            </li>
+            <li class="trust-strip-item">
+              <Icon name="ShieldCheck" size={14} strokeWidth={2.2} class="trust-strip-icon" />
+              <span>DEKRA zertifiziert</span>
+            </li>
+            <li class="trust-strip-item">
+              <Icon name="BadgeCheck" size={14} strokeWidth={2.2} class="trust-strip-icon" />
+              <span>3 Jahre Garantie</span>
+            </li>
+            <li class="trust-strip-item">
+              <Icon name="Truck" size={14} strokeWidth={2.2} class="trust-strip-icon" />
+              <span>Abholung 50 km</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Rechte Spalte: Werkstatt-Foto mit Floating Trust-Cards -->
+        <div class="lg:col-span-6 xl:col-span-6 relative stagger-3 fade-in">
+          <div class="hero-photo-frame">
+            <img
+              src="/images/hero.jpg"
+              alt="Bergedorfer Autolackiererei - Werkstatt-Halle in Hamburg-Bergedorf"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <div class="hero-photo-vignette"></div>
+
+            <!-- Floating DEKRA-Card (top-right) -->
+            <div class="hero-trust-overlay hero-trust-overlay-top">
+              <span class="hero-trust-overlay-icon"><img src="/images/dekra.jpg" alt="DEKRA Zertifikat" /></span>
+              <div>
+                <span class="hero-trust-overlay-label">DEKRA zertifiziert</span>
+                <span class="hero-trust-overlay-title">Jährlich geprüft</span>
+              </div>
+            </div>
+
+            <!-- Floating Inhaber-Card (bottom-left) -->
+            <div class="hero-trust-overlay hero-trust-overlay-bottom">
+              <span class="hero-trust-overlay-icon is-photo" style="background:linear-gradient(135deg,#0F75BD,#0A4D80);color:#fff;font-family:var(--font-headline);font-weight:700;font-size:1rem;">
+                MH
+              </span>
+              <div>
+                <span class="hero-trust-overlay-label is-brand">Inhaber &amp; Meister</span>
+                <span class="hero-trust-overlay-title">{site.owner}</span>
+                <span class="hero-trust-overlay-sub">seit 2012 in Bergedorf</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 2 - VIER USPs (Light, AMF "Vier gute Gründe"-Pattern)
+       2x2 symmetrisches Grid · info-card mit Icon + Titel + Body + Chip
+       ═══════════════════════════════════════════════════ -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="max-w-3xl mb-12 md:mb-14">
+        <p class="eyebrow mb-5">
+          <span>Vier gute Gründe</span>
+        </p>
+        <h2 class="heading-xl text-balance mb-4">
+          Vier Gründe, warum unsere Kunden uns <span class="accent-brand">vertrauen.</span>
+        </h2>
+        <p class="lead text-pretty">
+          Von der Abholung bis zur Rücklieferung mit Ersatzwagen-Service - wir liefern den Komplett-Service, den ein moderner Fachbetrieb leisten muss.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-5 lg:gap-6">
+        {usps.map((u, i) => (
+          <div class={`info-card fade-in stagger-${i + 1}`}>
+            <span class="info-card-icon">
+              <Icon name={u.icon} size={24} strokeWidth={1.8} />
+            </span>
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="heading-md">{u.title}</h3>
+              <span class="text-[0.65rem] font-semibold tracking-[0.16em] uppercase text-accent bg-accent/10 px-2 py-1 rounded-md whitespace-nowrap">{u.chip}</span>
+            </div>
+            <p class="text-ink-soft text-pretty">{u.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 3 - 8 LEISTUNGEN (Dark ink-grid)
+       Category-Label · 4x2 symmetrisches Grid
+       ═══════════════════════════════════════════════════ -->
+  <section class="section ink-grid relative">
+    <div class="container-rd relative">
+      <div class="max-w-3xl mb-12 md:mb-16">
+        <p class="eyebrow mb-5" style="color:rgb(var(--rgb-brand-sky));">
+          <span>Lackierung · Karosserie · Service</span>
+        </p>
+        <h2 class="heading-xl text-white text-balance mb-5">
+          Lackierung, Karosserie, Scheiben - <span style="color:rgb(var(--rgb-brand-sky));">aus einer Halle.</span>
+        </h2>
+        <p class="lead-on-dark text-pretty">
+          Vom Spot-Repair bis zur Komplettlackierung Ihres LKW: 2.000 qm Halle, moderne Lackier- und Trockenkabine, 12 Vorbereitungsplätze - bei uns gehen Fahrzeuge bis 7,5 t durch ein professionelles Werkstattprogramm.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+        {services.map((s, i) => (
+          <div class={`svc-tile fade-in stagger-${(i % 8) + 1}`}>
+            <span class="svc-tile-cat">{s.category}</span>
+            <span class="svc-tile-icon">
+              <Icon name={s.iconName} size={22} strokeWidth={1.8} />
+            </span>
+            <h3 class="svc-tile-title">{s.title}</h3>
+            <p class="svc-tile-text">{s.short}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/leistungen" class="arrow-link text-base" style="color:rgb(var(--rgb-brand-sky));">
+          Alle Leistungen im Detail
+          <Icon name="ArrowRight" size={18} strokeWidth={2} />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 4 - ÜBER UNS (Light, Foto links + Stats-Strip)
+       ═══════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div class="lg:col-span-6 fade-in stagger-1">
+          <div class="relative rounded-2xl overflow-hidden shadow-xl">
+            <img src="/images/philosophie.jpg" alt="Bergedorfer Autolackiererei - Innenansicht" loading="lazy" class="w-full h-auto aspect-[4/3] object-cover" />
+            <div class="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-ink/40 to-transparent pointer-events-none"></div>
+            <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white">
+              <div>
+                <span class="block text-[0.62rem] font-semibold tracking-[0.22em] uppercase mb-1.5 opacity-90">Seit 2012</span>
+                <span class="block font-headline font-bold text-2xl drop-shadow leading-tight">2.000 qm Halle in Bergedorf</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 fade-in stagger-2">
+          <p class="eyebrow mb-5">
+            <span>Über den Betrieb</span>
+          </p>
+          <h2 class="heading-xl text-balance mb-5">
+            Modern und vielseitig seit über <span class="accent-brand">22 Jahren.</span>
+          </h2>
+          <p class="lead text-pretty mb-5">
+            Direkt im Herzen Bergedorfs befindet sich unser im Juli 2012 fertig gestellter, hochmoderner Lackier- &amp; Karosserie-Fachbetrieb. In unserer über 2.000 qm großen Halle mit 7 m Arbeitshöhe können wir alle Lackier-, Hohlraumversiegelung-, Unterboden- sowie Karosseriearbeiten von PKW, Oldtimern, Kleintransportern und sonstigen Nutzfahrzeugen bis 7,5 t professionell und schnell durchführen.
+          </p>
+          <p class="text-ink-soft text-pretty">
+            Mit über <strong class="text-ink">20 geschulten Mitarbeitern</strong> und mehr als <strong class="text-ink">22 Jahren Berufserfahrung</strong> empfehlen wir uns als kompetenter Fachbetrieb rund um Ihr Fahrzeug. Zu unseren Kunden gehören Niederlassungen von vielen deutschen Automarken, Autovermietungen, Flottenservices und städtische Betriebe.
+          </p>
+        </div>
+      </div>
+
+      <!-- Stats-Strip unter Über-uns -->
+      <div class="stats-bar mt-12 lg:mt-16">
+        {aboutStats.map((s) => (
+          <div class="stat-cell">
+            <div class={`stat-num ${s.num === '2.000' || s.num === '22+' ? 'accent' : ''}`}>{s.num}</div>
+            <div class="stat-label">{s.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 5 - PHILOSOPHIE + DEKRA (Light, Quote links + DEKRA rechts)
+       ═══════════════════════════════════════════════════ -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div class="lg:col-span-7">
+          <p class="eyebrow eyebrow-accent mb-6">
+            <span>Unsere Philosophie</span>
+          </p>
+          <blockquote class="philosophy-quote mb-7 relative">
+            Eine gute Arbeit beginnt mit dem <span class="accent-brand">Zuhören.</span>
+          </blockquote>
+          <p class="lead text-pretty mb-6 max-w-xl">
+            Deshalb orientieren wir uns bei unserer Tätigkeit an den Anforderungen und Wünschen unserer Kunden. Bevor wir lackieren, schrauben oder austauschen, hören wir zu - und gemeinsam mit Ihnen finden wir die wirtschaftlichste Lösung für Ihr Fahrzeug.
+          </p>
+          <a href="/philosophie" class="arrow-link">
+            Mehr zu unserer Philosophie
+            <Icon name="ArrowRight" size={18} strokeWidth={2} />
+          </a>
+        </div>
+
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="rounded-2xl overflow-hidden border border-line shadow-xl bg-white p-6">
+              <img src="/images/dekra.jpg" alt="DEKRA Zertifikat - Bergedorfer Autolackiererei" class="w-full h-auto" loading="lazy" />
+            </div>
+            <div class="hero-trust-overlay" style="position:absolute;bottom:-1.25rem;right:-1.25rem;">
+              <span class="hero-trust-overlay-icon" style="background:rgb(var(--rgb-accent));color:#fff;font-family:var(--font-headline);font-weight:700;font-size:0.7rem;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;">DEKRA</span>
+              <div>
+                <span class="hero-trust-overlay-label">Zertifiziert</span>
+                <span class="hero-trust-overlay-title">Jährliche Prüfung</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 6 - LACKMARKEN (Light, PPG + Glasurit prominent)
+       ═══════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <p class="eyebrow justify-center mb-5">
+          <span>Unsere Lackmarken</span>
+        </p>
+        <h2 class="heading-xl text-balance mb-4">
+          Wir lackieren mit <span class="accent-brand">Qualitätsprodukten.</span>
+        </h2>
+        <p class="lead text-pretty">
+          Für Ergebnisse in Erstausrüsterqualität setzen wir auf zwei der weltweit führenden Refinish-Marken.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-5 lg:gap-8 max-w-4xl mx-auto">
+        {site.paintBrands.map((b, i) => (
+          <div class={`brand-display fade-in stagger-${i + 1}`}>
+            <span class="brand-display-label">Lackmarke</span>
+            <img src={b.img} alt={`${b.name} Logo`} class={`brand-display-img ${b.name === 'PPG' ? 'is-large' : ''}`} loading="lazy" />
+            <p class="brand-display-text">{b.tagline}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 7 - STANDORT (Light, 3 Tiles + Maps)
+       ═══════════════════════════════════════════════════ -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-12">
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-5">
+            <span>Standort</span>
+          </p>
+          <h2 class="heading-xl text-balance mb-6">
+            {site.address.street},<br />
+            <span class="accent-brand">Hamburg-Bergedorf.</span>
+          </h2>
+
+          <p class="text-ink-soft mb-6 text-pretty">
+            Eine hervorragende Verkehrsanbindung an den Großraum Hamburg ist durch die nahe gelegene B5 sowie die Bundesautobahnen BAB25 und BAB1 gewährleistet.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <a href={telLandline} class="tile">
+              <span class="tile-icon"><Icon name="Phone" size={20} strokeWidth={2} /></span>
+              <div>
+                <p class="text-xs uppercase tracking-[0.18em] text-ink-muted font-sans font-semibold mb-0.5">Festnetz</p>
+                <p class="heading-md text-ink">{site.phoneLandline}</p>
+              </div>
+            </a>
+            <a href={whatsappLink} target="_blank" rel="noopener" class="tile">
+              <span class="tile-icon"><Icon name="MessageCircle" size={20} strokeWidth={2} /></span>
+              <div>
+                <p class="text-xs uppercase tracking-[0.18em] text-ink-muted font-sans font-semibold mb-0.5">WhatsApp</p>
+                <p class="heading-md text-ink">{site.phoneMobile}</p>
+              </div>
+            </a>
+            <a href={mailLink} class="tile">
+              <span class="tile-icon"><Icon name="Mail" size={20} strokeWidth={2} /></span>
+              <div>
+                <p class="text-xs uppercase tracking-[0.18em] text-ink-muted font-sans font-semibold mb-0.5">E-Mail</p>
+                <p class="font-headline font-bold text-ink break-all text-lg">{site.email}</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="text-sm text-ink-muted">
+            <p><strong class="text-ink font-headline">Öffnungszeiten:</strong> {site.hours.note}</p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="rounded-2xl overflow-hidden border border-line shadow-xl aspect-[4/3] lg:aspect-auto lg:h-full bg-paper-100">
+            <iframe
+              src={site.googleMapsEmbed}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full h-full"
+              style="border:0; min-height: 480px;"
+              title="Standort Bergedorfer Autolackiererei auf Google Maps"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       SECTION 8 - FINAL CTA mit Werkstatt-Foto-BG
+       ═══════════════════════════════════════════════════ -->
+  <section class="final-cta">
+    <div class="final-cta-bg" aria-hidden="true">
+      <img src="/images/hero.jpg" alt="" loading="lazy" />
+      <div class="final-cta-overlay"></div>
+    </div>
+    <div class="container-rd relative">
+      <div class="final-cta-inner">
+        <p class="eyebrow justify-center mb-5" style="color:rgb(var(--rgb-brand-sky));">
+          <span>Lackschaden? Karosserie?</span>
+        </p>
+        <h2 class="heading-display text-white text-balance mb-5">
+          Wir <span style="color:rgb(var(--rgb-brand-sky));">schauen drauf.</span>
+        </h2>
+        <p class="lead-on-dark max-w-2xl mx-auto mb-8 text-pretty">
+          Rufen Sie uns an, schreiben Sie uns auf WhatsApp oder per E-Mail. Wir besprechen Ihr Anliegen, geben eine ehrliche Einschätzung - und holen das Fahrzeug auf Wunsch im Umkreis von 50 km ab.
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href={telLandline} class="btn btn-primary btn-lg">
+            <Icon name="Phone" size={16} strokeWidth={2.2} />
+            {site.phoneLandline}
+          </a>
+          <a href={whatsappLink} target="_blank" rel="noopener" class="btn btn-glass btn-lg">
+            <Icon name="MessageCircle" size={16} strokeWidth={2} />
+            WhatsApp
+          </a>
+          <a href={mailLink} class="btn btn-glass btn-lg">
+            <Icon name="Mail" size={16} strokeWidth={2} />
+            E-Mail
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

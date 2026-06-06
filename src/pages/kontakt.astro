@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { site, telLandline, telMobile, mailLink, whatsappLink } from '../data/site';
+---
+
+<Layout title={`Kontakt - ${site.name}`} description={`Kontakt zur Bergedorfer Autolackiererei: Festnetz ${site.phoneLandline}, Mobil ${site.phoneMobile}, E-Mail ${site.email}. Kurt-A.-Körber-Chaussee 107-109, 21033 Hamburg.`} current="kontakt">
+
+  <!-- Subpage Hero -->
+  <section class="ink-grid relative pt-28 pb-14 md:pt-32 md:pb-20 overflow-hidden">
+    <div class="container-rd relative">
+      <p class="eyebrow mb-5" style="color:rgb(var(--rgb-brand-sky));"><span>Kontakt</span></p>
+      <h1 class="heading-display text-white text-balance mb-5 max-w-4xl">
+        Rufen Sie uns an - <span style="color:rgb(var(--rgb-brand-sky));">wir hören zu.</span>
+      </h1>
+      <p class="lead-on-dark max-w-3xl text-pretty">
+        Der direkte Draht ist uns lieber als jedes Formular. Rufen Sie an, schreiben Sie eine WhatsApp oder eine E-Mail - wir melden uns zurück.
+      </p>
+    </div>
+  </section>
+
+  <!-- Kontakt-Tiles -->
+  <section class="section">
+    <div class="container-rd">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        <a href={telLandline} class="tile">
+          <span class="tile-icon"><Icon name="Phone" size={22} strokeWidth={2} /></span>
+          <p class="text-xs uppercase tracking-[0.18em] text-ink-muted font-sans font-semibold">Festnetz</p>
+          <p class="heading-md text-ink">{site.phoneLandline}</p>
+          <p class="text-sm text-ink-soft">Mo-Fr 08:00-18:00 Uhr</p>
+        </a>
+
+        <a href={telMobile} class="tile">
+          <span class="tile-icon"><Icon name="PhoneCall" size={22} strokeWidth={2} /></span>
+          <p class="text-xs uppercase tracking-[0.18em] text-ink-muted font-sans font-semibold">Mobil</p>
+          <p class="heading-md text-ink">{site.phoneMobile}</p>
+          <p class="text-sm text-ink-soft">Direkter Draht zum Meister</p>
+        </a>
+
+        <a href={whatsappLink} target="_blank" rel="noopener" class="tile">
+          <span class="tile-icon"><Icon name="MessageCircle" size={22} strokeWidth={2} /></span>
+          <p class="text-xs uppercase tracking-[0.18em] text-ink-muted font-sans font-semibold">WhatsApp</p>
+          <p class="heading-md text-ink">{site.phoneMobile}</p>
+          <p class="text-sm text-ink-soft">Foto + Beschreibung schicken</p>
+        </a>
+
+        <a href={mailLink} class="tile">
+          <span class="tile-icon"><Icon name="Mail" size={22} strokeWidth={2} /></span>
+          <p class="text-xs uppercase tracking-[0.18em] text-ink-muted font-sans font-semibold">E-Mail</p>
+          <p class="font-headline font-bold text-ink break-all text-lg">{site.email}</p>
+          <p class="text-sm text-ink-soft">Antwort meist am gleichen Tag</p>
+        </a>
+      </div>
+
+      <!-- Hinweis: kein Formular -->
+      <div class="mt-12 max-w-3xl mx-auto bg-paper-50 border border-line rounded-2xl p-6 md:p-8">
+        <h2 class="heading-md mb-3">Warum kein Formular?</h2>
+        <p class="text-ink-soft text-pretty mb-3">
+          Bei einer Lackier- oder Karosseriereparatur helfen Detailfragen, die ein Formular nicht stellen kann: Welches Modell? Welche Schadenstelle? Mit oder ohne Versicherung?
+        </p>
+        <p class="text-ink-soft text-pretty">
+          Am Telefon oder per WhatsApp können wir Ihnen in zwei Minuten sagen, ob ein Termin sinnvoll ist - und welche Unterlagen Sie idealerweise mitbringen sollten.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Anschrift + Maps -->
+  <section class="section section-paper-deep">
+    <div class="container-rd">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-12">
+        <div class="lg:col-span-5">
+          <p class="eyebrow mb-5"><span>Anschrift</span></p>
+          <h2 class="heading-xl text-balance mb-5">
+            {site.address.street},<br />
+            <span class="accent-brand">{site.address.postcode} {site.address.city}</span>
+          </h2>
+          <p class="text-ink-soft mb-6 text-pretty">
+            Eine hervorragende Verkehrsanbindung an den Großraum Hamburg ist durch die nahe gelegene B5 sowie die Bundesautobahnen BAB25 und BAB1 gewährleistet. Wir holen Ihr Fahrzeug auf Wunsch im Umkreis von 50 km bei Ihnen ab.
+          </p>
+
+          <div class="bg-white rounded-2xl border border-line p-5 mb-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-2">Öffnungszeiten</p>
+            <table class="w-full text-sm">
+              {site.openingHours.map((h) => (
+                <tr class={`border-b border-line/60 last:border-0 ${!h.open ? 'text-ink-muted' : 'text-ink'}`}>
+                  <td class="py-2 font-medium">{h.day}</td>
+                  <td class="py-2 text-right font-headline font-bold">{h.open ? `${h.open}-${h.close}` : 'geschlossen'}</td>
+                </tr>
+              ))}
+            </table>
+          </div>
+
+          <a href={site.googleDirectionsUrl} target="_blank" rel="noopener" class="btn btn-outline w-full">
+            <Icon name="Navigation" size={16} strokeWidth={2} />
+            Route planen
+          </a>
+        </div>
+
+        <div class="lg:col-span-7">
+          <div class="rounded-2xl overflow-hidden border border-line shadow-xl aspect-[4/3] lg:aspect-auto lg:h-full bg-paper-100">
+            <iframe
+              src={site.googleMapsEmbed}
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              class="w-full h-full"
+              style="border:0; min-height: 500px;"
+              title="Standort Bergedorfer Autolackiererei auf Google Maps"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

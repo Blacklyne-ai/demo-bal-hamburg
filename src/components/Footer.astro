@@ -1,0 +1,420 @@
+---
+import { site, fullNav, legalNav, telLandline, telMobile, mailLink, whatsappLink } from '../data/site';
+import Icon from './Icon.astro';
+import Logo from './Logo.astro';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="site-footer-topline"></div>
+
+  <div class="container-rd relative">
+
+    <!-- Main grid -->
+    <div class="site-footer-grid">
+      <!-- Brand column -->
+      <div class="site-footer-brand">
+        <a href="/" class="inline-flex mb-5" aria-label={site.name}>
+          <Logo variant="light" size="md" />
+        </a>
+        <p class="text-white/70 text-[0.95rem] leading-relaxed mb-5 max-w-md">
+          Lackier- & Karosserie-Meisterbetrieb in Hamburg-Bergedorf. Seit über 22 Jahren. DEKRA zertifiziert. 2.000 qm Halle. PKW bis LKW 7,5 t.
+        </p>
+
+        <!-- DEKRA Trust-Pill (statt Auto Bild) -->
+        <div class="footer-trust-pill">
+          <span class="footer-trust-pill-dot"></span>
+          <em>DEKRA zertifiziert · jährlich geprüft</em>
+        </div>
+
+        <!-- Lackmarken-Strip -->
+        <div class="footer-lack-strip">
+          <span class="footer-lack-strip-label">Wir lackieren mit</span>
+          <div class="footer-lack-strip-logos">
+            <span class="footer-lack-logo"><img src="/images/ppg.png" alt="PPG" /></span>
+            <span class="footer-lack-logo is-square"><img src="/images/glasurit.jpg" alt="Glasurit" /></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kontakt column -->
+      <div class="site-footer-col">
+        <h3 class="site-footer-h">Kontakt</h3>
+        <ul class="site-footer-contact">
+          <li>
+            <a href={telLandline} class="footer-contact-row">
+              <span class="footer-contact-icon"><Icon name="Phone" size={16} strokeWidth={2} /></span>
+              <span>
+                <span class="footer-contact-label">Festnetz</span>
+                <span class="footer-contact-value">{site.phoneLandline}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={telMobile} class="footer-contact-row">
+              <span class="footer-contact-icon"><Icon name="PhoneCall" size={16} strokeWidth={2} /></span>
+              <span>
+                <span class="footer-contact-label">Mobil</span>
+                <span class="footer-contact-value">{site.phoneMobile}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={whatsappLink} target="_blank" rel="noopener" class="footer-contact-row">
+              <span class="footer-contact-icon"><Icon name="MessageCircle" size={16} strokeWidth={2} /></span>
+              <span>
+                <span class="footer-contact-label">WhatsApp</span>
+                <span class="footer-contact-value">{site.phoneMobile}</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href={mailLink} class="footer-contact-row">
+              <span class="footer-contact-icon"><Icon name="Mail" size={16} strokeWidth={2} /></span>
+              <span>
+                <span class="footer-contact-label">E-Mail</span>
+                <span class="footer-contact-value-sm">{site.email}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="footer-address">
+          <span class="footer-contact-icon"><Icon name="MapPin" size={16} strokeWidth={2} /></span>
+          <address class="not-italic text-[0.92rem] text-white/75 leading-relaxed">
+            {site.address.street}<br />
+            {site.address.postcode} {site.address.city}<br />
+            <span class="text-white/45 text-sm">{site.address.district}</span>
+          </address>
+        </div>
+      </div>
+
+      <!-- Öffnungszeiten -->
+      <div class="site-footer-col">
+        <h3 class="site-footer-h">Öffnungszeiten</h3>
+        <div class="footer-hours-card">
+          <table class="footer-hours-table">
+            {site.openingHours.map((h) => (
+              <tr class={!h.open ? 'is-closed' : ''}>
+                <td>{h.day}</td>
+                <td>{h.open ? `${h.open}-${h.close}` : '—'}</td>
+              </tr>
+            ))}
+          </table>
+          <div class="footer-hours-note">
+            <span class="footer-hours-note-dot"></span>
+            <span>Inhaber: <strong>{site.owner}</strong></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="site-footer-col">
+        <h3 class="site-footer-h">Navigation</h3>
+        <ul class="site-footer-nav">
+          {fullNav.map((item) => (
+            <li>
+              <a href={item.href}>
+                <span class="site-footer-nav-bullet"></span>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom-Strip -->
+    <div class="site-footer-bottom">
+      <p class="site-footer-copy">
+        © {year} {site.name} e. K. · Inhaber: {site.owner} · USt-ID: {site.vatId}
+      </p>
+      <div class="site-footer-legal">
+        {legalNav.map((i) => (<a href={i.href}>{i.label}</a>))}
+      </div>
+      <p class="site-footer-demo">Demo · Hamburg-Bergedorf</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgb(15 117 189 / 0.10), transparent 60%),
+      linear-gradient(180deg, rgb(15 20 25) 0%, rgb(10 13 17) 100%);
+    color: rgb(255 255 255 / 0.78);
+    padding: clamp(3.5rem, 6vw, 5rem) 0 1.5rem;
+    overflow: hidden;
+  }
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgb(255 255 255 / 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.018) 1px, transparent 1px);
+    background-size: 64px 64px;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+  .site-footer > * { position: relative; }
+
+  .site-footer-topline {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgb(15 117 189 / 0.6), rgb(214 40 40 / 0.4), transparent);
+  }
+
+  .site-footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+  @media (min-width: 640px)  { .site-footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1024px) { .site-footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; } }
+
+  /* Section Headings */
+  .site-footer-h {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: rgb(var(--rgb-brand-sky));
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgb(15 117 189 / 0.22);
+  }
+
+  /* DEKRA Trust-Pill */
+  .footer-trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.5rem 1rem;
+    background: rgb(214 40 40 / 0.12);
+    border: 1px solid rgb(214 40 40 / 0.35);
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  .footer-trust-pill em {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgb(255 200 200);
+  }
+  .footer-trust-pill-dot {
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: rgb(var(--rgb-accent));
+    box-shadow: 0 0 8px rgb(214 40 40 / 0.7);
+    animation: glow-dot 2.2s ease-out infinite;
+  }
+
+  /* Lackmarken-Strip */
+  .footer-lack-strip {
+    padding-top: 1.25rem;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+  }
+  .footer-lack-strip-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.5);
+    margin-bottom: 0.75rem;
+  }
+  .footer-lack-strip-logos {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .footer-lack-logo {
+    background: #fff;
+    padding: 0.55rem 0.85rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+  }
+  .footer-lack-logo.is-square { padding: 0.3rem; }
+  .footer-lack-logo img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+  .footer-lack-logo.is-square img { max-height: 38px; }
+
+  /* Kontakt-Column */
+  .site-footer-contact { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0.7rem;
+    margin: 0 -0.7rem;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .footer-contact-row:hover {
+    background: rgb(15 117 189 / 0.1);
+    transform: translateX(2px);
+  }
+  .footer-contact-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgb(15 117 189 / 0.15);
+    color: rgb(var(--rgb-brand-sky));
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .footer-contact-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgb(255 255 255 / 0.5);
+    margin-bottom: 1px;
+  }
+  .footer-contact-value {
+    display: block;
+    font-family: var(--font-headline);
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    line-height: 1.1;
+  }
+  .footer-contact-value-sm {
+    display: block;
+    font-weight: 500;
+    font-size: 0.82rem;
+    color: rgb(255 255 255 / 0.85);
+    line-height: 1.2;
+    word-break: break-all;
+  }
+  .footer-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+  }
+
+  /* Öffnungszeiten-Card */
+  .footer-hours-card {
+    background:
+      linear-gradient(135deg, rgb(15 117 189 / 0.1) 0%, rgb(15 117 189 / 0.03) 100%);
+    border: 1px solid rgb(15 117 189 / 0.25);
+    border-radius: 12px;
+    padding: 1.1rem 1.25rem;
+  }
+  .footer-hours-table {
+    width: 100%;
+    font-size: 0.86rem;
+    margin-bottom: 0.9rem;
+  }
+  .footer-hours-table td {
+    padding: 0.3rem 0;
+    color: rgb(255 255 255 / 0.82);
+    font-weight: 500;
+  }
+  .footer-hours-table td:first-child {
+    color: rgb(255 255 255 / 0.55);
+    width: 50%;
+  }
+  .footer-hours-table tr.is-closed td { color: rgb(255 255 255 / 0.35); }
+  .footer-hours-note {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgb(15 117 189 / 0.18);
+    font-size: 0.82rem;
+    color: rgb(255 255 255 / 0.78);
+  }
+  .footer-hours-note strong { color: rgb(var(--rgb-brand-sky)); font-weight: 700; }
+  .footer-hours-note-dot {
+    width: 6px; height: 6px;
+    border-radius: 999px;
+    background: rgb(var(--rgb-brand-sky));
+    box-shadow: 0 0 8px rgb(63 165 220 / 0.7);
+    flex-shrink: 0;
+    animation: glow-dot 2.2s ease-out infinite;
+  }
+
+  /* Navigation */
+  .site-footer-nav { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+  .site-footer-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgb(255 255 255 / 0.72);
+    font-size: 0.92rem;
+    padding: 0.3rem 0;
+    transition: color 0.2s ease, gap 0.25s ease;
+  }
+  .site-footer-nav a:hover {
+    color: rgb(var(--rgb-brand-sky));
+    gap: 0.7rem;
+  }
+  .site-footer-nav-bullet {
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: rgb(15 117 189 / 0.5);
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+  .site-footer-nav a:hover .site-footer-nav-bullet {
+    background: rgb(var(--rgb-brand-sky));
+    transform: scale(1.5);
+  }
+
+  /* Bottom strip */
+  .site-footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+    font-size: 0.78rem;
+    color: rgb(255 255 255 / 0.5);
+  }
+  .site-footer-copy { margin: 0; }
+  .site-footer-legal { display: flex; flex-wrap: wrap; gap: 1.25rem; }
+  .site-footer-legal a {
+    color: rgb(255 255 255 / 0.65);
+    transition: color 0.2s ease;
+  }
+  .site-footer-legal a:hover { color: rgb(var(--rgb-brand-sky)); }
+  .site-footer-demo {
+    margin: 0;
+    color: rgb(255 255 255 / 0.35);
+    font-style: italic;
+  }
+
+  @keyframes glow-dot {
+    0%   { box-shadow: 0 0 0 0 rgb(63 165 220 / 0.55); }
+    70%  { box-shadow: 0 0 0 8px rgb(63 165 220 / 0); }
+    100% { box-shadow: 0 0 0 0 rgb(63 165 220 / 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .footer-trust-pill-dot, .footer-hours-note-dot { animation: none; }
+  }
+</style>

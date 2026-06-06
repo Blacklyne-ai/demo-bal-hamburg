@@ -1,0 +1,63 @@
+---
+// BAL Hamburg Brand-Logo. Original-Pixel-Datei (280x75 PNG mit weißem BG).
+// Logo zeigt: Blaue Straßenmarkierungen + "BERGEDORFER AUTOLACKIEREREI" + rotes "MEISTERBETRIEB".
+// 1:1 vom Bestand übernommen, NICHT neu gestaltet.
+// variant="dark"  → für helle BGs (Header, hat eigenen weißen BG, perfekt)
+// variant="light" → für dunkle BGs (Footer/Mobile-Menu) → Logo in weißer Rounded-Box
+interface Props {
+  variant?: 'dark' | 'light';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+const {
+  variant = 'dark',
+  size = 'md',
+  class: className = '',
+} = Astro.props;
+
+const heights = { sm: 32, md: 44, lg: 56 };
+const h = heights[size];
+// Original = 280 x 75 → aspect ~3.73:1
+const w = Math.round(h * (280 / 75));
+---
+
+<span class={`brand-logo ${variant === 'light' ? 'brand-logo-on-dark' : ''} ${className}`} aria-label="Bergedorfer Autolackiererei - Meisterbetrieb Hamburg">
+  <img
+    src="/logo.png"
+    alt="Bergedorfer Autolackiererei - Meisterbetrieb Hamburg"
+    width={w}
+    height={h}
+    class="brand-logo-img"
+    style={`height: ${h}px; width: auto;`}
+    loading="eager"
+    decoding="async"
+  />
+</span>
+
+<style>
+  .brand-logo {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s ease;
+  }
+  .brand-logo:hover {
+    transform: translateY(-1px);
+    filter: drop-shadow(0 4px 16px rgb(15 117 189 / 0.3));
+  }
+  /* Dunkle Sections (Footer): Logo in weißer Box, sodass weißer Logo-BG nicht hart abschneidet */
+  .brand-logo-on-dark {
+    background: #fff;
+    padding: 0.45rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid rgb(255 255 255 / 0.15);
+    box-shadow:
+      0 4px 14px -4px rgb(0 0 0 / 0.35),
+      inset 0 1px 0 0 rgb(255 255 255 / 0.6);
+  }
+  .brand-logo-img {
+    display: block;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+</style>
